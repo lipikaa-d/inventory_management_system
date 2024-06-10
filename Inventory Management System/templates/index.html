@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Management</title>
+</head>
+<body>
+    <h1>Inventory Management</h1>
+    <a href="{{ url_for('add_item') }}">Add New Item</a>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Issued To Department</th>
+            <th>Emp ID</th>
+            <th>Actions</th>
+        </tr>
+        {% for item in inventory %}
+        <tr>
+            <td>{{ item['item_id'] }}</td>
+            <td>{{ item['name'] }}</td>
+            <td>{{ item['quantity'] }}</td>
+            <td>{{ ','.join(item['issued_to_department']) }}</td>
+            <td>{{ ','.join(item['emp_id']) }}</td>
+            <td>
+                <a href="{{ url_for('view_item', item_id=item['item_id']) }}">View</a>
+                <a href="{{ url_for('update_item', item_id=item['item_id']) }}">Edit</a>
+                <a href="{{ url_for('delete_item', item_id=item['item_id']) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

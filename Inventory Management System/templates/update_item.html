@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update_item</title>
+</head>
+<form method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ item['name'] }}" required><br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" step="any" id="quantity" name="quantity" value="{{ item['quantity'] }}" required><br>
+        <label for="issued_to_department">Issued To Department:</label>
+        <input type="text" id="issued_to_department" name="issued_to_department" value="{{ ','.join(item['issued_to_department']) }}"><br>
+        <label for="emp_id">Emp ID:</label>
+        <input type="text" id="emp_id" name="emp_id" value="{{ ','.join(item['emp_id']) }}"><br>
+        <button type="submit">Update Item</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to Inventory</a>
+</body>
+</html>
